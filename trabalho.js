@@ -1,7 +1,6 @@
 
-var 
+var itens = document.querySelectorAll("#trab li"),
 	inputText = document.getElementById("txt"),
-	itens = document.querySelectorAll("#trab li"),
 	lis =[], liIndex;
 	
 	
@@ -12,19 +11,20 @@ for(var i=0; i< itens.length; i++){
 var botaoSave = document.getElementById("btnSave");
 var botaoApagar = document.getElementById("btnDelete");
 var botaoAdc =document.getElementById("btnAdc");
+
 for(var i=0; i < itens.length; i++){
 	
 	
 	itens[i].onclick = function(){
 		liIndex = lis.indexOf(this.innerHTML);
 		
-		console.log(this.innerHTML + " INDEX = " + liIndex);
 		
+		itens[liIndex].innerHTML = inputText.value;
 		inputText.value = this.innerHTML;
 		botaoSave.style.display = "inline";
-		botaoApagar.style.display = "inline";
+		botaoApagar.style.display = "none";
 		botaoAdc.style.display = "none";
-	
+		
 			
 	}
 }
@@ -34,31 +34,35 @@ function addTarefa(){
 	 
 	var	listNode = document.getElementById("trab"),
 		txtNode = document.createTextNode(inputText.value),
-		liNode = document.createElement("LI");
-		
-		
+		liNode = document.createElement("li");
+	
 		liNode.appendChild(txtNode);
 		listNode.appendChild(liNode);
-		
-		
+	
+	
+	
+	 liNode.onclick = function(){
+     liIndex = lis.indexOf(liNode.innerHTML);
+  		inputText.value = this.innerHTML;
+		btnAdc.style.display = "none";
+		btnSave.style.display ="inline";
+		btnDelete.style.display = "inline";
+	 	inputText.value = liNode.innerHTML;
+	 }
+
 }
-
-
-
-
+		
 
 
 //editar tarefa
 
 
-
-
-
 function editTarefa(){
-	itens[liIndex].innerHTML = inputText.value;
+	itens[liIndex].innerHTML = addTarefa();
 	btnAdc.style.display = "inline";
 	btnSave.style.display ="none";
 	btnDelete.style.display = "none";
+	
 }
 
 
@@ -69,7 +73,9 @@ function editTarefa(){
 
 
 function deleteTarefa(){
-	itens[liIndex].parentNode.removeChild(itens[liIndex]);
+	
+
+	inputText.delete = liIndex[i] ;
 	inputText.value = "";
 	
 	btnAdc.style.display = "inline";
@@ -79,10 +85,5 @@ function deleteTarefa(){
 }
 
 
-function saveToStorange(){
-	localStorage.setItem('list_tarefa', JSON.stringify(tarefas));	
-	
-	
-}
 
 
