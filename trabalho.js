@@ -1,7 +1,10 @@
 
 var itens = document.querySelectorAll("#trab li"),
 	inputText = document.getElementById("txt"),
-	lis =[], liIndex;
+	lis =[], liIndex,
+	liSelecionado = null;
+	
+	;
 	
 	
 for(var i=0; i< itens.length; i++){
@@ -17,8 +20,6 @@ for(var i=0; i < itens.length; i++){
 	
 	itens[i].onclick = function(){
 		liIndex = lis.indexOf(this.innerHTML);
-		
-		
 		itens[liIndex].innerHTML = inputText.value;
 		inputText.value = this.innerHTML;
 		botaoSave.style.display = "inline";
@@ -49,41 +50,34 @@ function addTarefa(){
 		btnDelete.style.display = "inline";
 	 	inputText.value = liNode.innerHTML;
 	 }
-
+document.querySelector("#txt").value = "";
+	
 }
-		
-
 
 //editar tarefa
 
 
 function editTarefa(){
-	itens[liIndex].innerHTML = addTarefa();
-	btnAdc.style.display = "inline";
-	btnSave.style.display ="none";
-	btnDelete.style.display = "none";
+		
+	liSelecionado.innerHTML = document.querySelector("#txt").value;
 	
+	
+
 }
-
-
-
-
 
 //deletar tarefa
 
 
 function deleteTarefa(){
-	
-
-	inputText.delete = liIndex[i] ;
-	inputText.value = "";
-	
-	btnAdc.style.display = "inline";
-	btnDelete.style.display ="none";
-	btnSave.style.display = "none";
+	liSelecionado.style.display = "none";
 	
 }
 
 
 
 
+document.addEventListener("click",function(evento){
+	if(event.target.nodeName === 'LI') {
+		liSelecionado = evento.target;
+	}
+})
