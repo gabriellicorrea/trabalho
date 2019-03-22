@@ -1,19 +1,23 @@
 
-var items = document.querySelectorAll("#trab li"),
+var itens = document.querySelectorAll("#trab li"),
 	inputText = document.getElementById("txt"),
-	tab =[], liIndex;
+	lis =[], liIndex;
 	
 	
-	for(var i=0; i< items.length; i++){
-	tab.push(items[i].innerHTML);
+for(var i=0; i< itens.length; i++){
+	lis.push(itens[i].innerHTML);
 }
 
-for(var i=0; i < items.length; i++){
-	
-	items[i].onclick = function(){
-	liIndex = tab.indexOf(this.innerHTML);
-	inputText.value = this.innerHTML;
-
+var botaoSave = document.getElementById("btnSave");
+var botaoApagar = document.getElementById("btnDelete");
+var botaoAdc =document.getElementById("btnAdc");
+for(var i=0; i < itens.length; i++){
+	itens[i].onclick = function(){
+		liIndex = lis.indexOf(this.innerHTML);
+		inputText.value = this.innerHTML;
+		botaoSave.style.display = "block";
+		botaoApagar.style.display = "block";
+		botaoAdc.style.display = "none";
 	
 	}
 }
@@ -28,6 +32,8 @@ function addTarefa(){
 		
 		liNode.appendChild(txtNode);
 		listNode.appendChild(liNode);
+		
+		
 }
 
 
@@ -42,7 +48,8 @@ function addTarefa(){
 
 
 function editTarefa(){
-	items[liIndex].innerHTML = inputText.value;
+	itens[liIndex].innerHTML = inputText.value;
+	
 }
 
 
@@ -53,6 +60,9 @@ function editTarefa(){
 
 
 function deleteTarefa(){
-	items[liIndex].parentNode.removeChild(items[liIndex]);
+	itens[liIndex].parentNode.removeChild(itens[liIndex]);
 	inputText.value = "";
 }
+
+
+

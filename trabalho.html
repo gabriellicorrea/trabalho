@@ -4,20 +4,20 @@
 	
 <body>
 	
-	<h1>Minha Rotina</h1>
+	<h1>Crie Sua Rotina</h1>
 
 	
 	<input type="text" id="txt" placeholder="">
 	
-	<button onclick="addTarefa()">Adicionar</button>
+	<button id="btnAdc" onclick="addTarefa()">Adicionar</button>
 	
-	<button onclick="editTarefa()">Editar</button>
+	<button class="edit" id="btnSave" onclick="editTarefa()">Salvar</button>
 	
-	<button onclick="deleteTarefa()">Apagar</button>
+	<button class="delete" id="btnDelete" onclick="deleteTarefa()">Apagar</button>
 	
-	<div id="trab">
+	<ul id="trab">
 	
-		<ul>
+		
 			<li>Ir ao mercado
 			</li>
 			
@@ -35,7 +35,9 @@
 		</ul>
 	
 	
-	</div>
+	
 	    <script type="text/javascript" src="trabalho.js"></script>
 </body>
 </html>
+
+
