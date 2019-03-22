@@ -1,7 +1,12 @@
 body{
- background-color: red;   
+ background-color: pink;  
+ text-align:center;
 }
 
+li{
+    list-style-type:none;
+    
+}
 .edit{
     display: none;
 }
@@ -9,3 +14,16 @@ body{
 .delete{
     display: none;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

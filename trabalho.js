@@ -1,6 +1,7 @@
 
-var itens = document.querySelectorAll("#trab li"),
+var 
 	inputText = document.getElementById("txt"),
+	itens = document.querySelectorAll("#trab li"),
 	lis =[], liIndex;
 	
 	
@@ -12,13 +13,19 @@ var botaoSave = document.getElementById("btnSave");
 var botaoApagar = document.getElementById("btnDelete");
 var botaoAdc =document.getElementById("btnAdc");
 for(var i=0; i < itens.length; i++){
+	
+	
 	itens[i].onclick = function(){
 		liIndex = lis.indexOf(this.innerHTML);
+		
+		console.log(this.innerHTML + " INDEX = " + liIndex);
+		
 		inputText.value = this.innerHTML;
-		botaoSave.style.display = "block";
-		botaoApagar.style.display = "block";
+		botaoSave.style.display = "inline";
+		botaoApagar.style.display = "inline";
 		botaoAdc.style.display = "none";
 	
+			
 	}
 }
 
@@ -49,7 +56,9 @@ function addTarefa(){
 
 function editTarefa(){
 	itens[liIndex].innerHTML = inputText.value;
-	
+	btnAdc.style.display = "inline";
+	btnSave.style.display ="none";
+	btnDelete.style.display = "none";
 }
 
 
@@ -62,7 +71,18 @@ function editTarefa(){
 function deleteTarefa(){
 	itens[liIndex].parentNode.removeChild(itens[liIndex]);
 	inputText.value = "";
+	
+	btnAdc.style.display = "inline";
+	btnDelete.style.display ="none";
+	btnSave.style.display = "none";
+	
 }
 
+
+function saveToStorange(){
+	localStorage.setItem('list_tarefa', JSON.stringify(tarefas));	
+	
+	
+}
 
 
