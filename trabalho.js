@@ -60,7 +60,9 @@ document.querySelector("#txt").value = "";
 function editTarefa(){
 		
 	liSelecionado.innerHTML = document.querySelector("#txt").value;
-	
+	btnAdc.style.display = "inline";
+	btnSave.style.display ="inline";
+	btnDelete.style.display = "inline";
 	
 
 }
@@ -70,7 +72,9 @@ function editTarefa(){
 
 function deleteTarefa(){
 	liSelecionado.style.display = "none";
-	
+	btnAdc.style.display = "inline";
+	btnSave.style.display ="inline";
+	btnDelete.style.display = "inline";
 }
 
 
